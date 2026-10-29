@@ -26,7 +26,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: eltrueno/TruenoProClubServices
-          ref: main
+          # El commit que acaba de desplegar el City (repository_dispatch) o main si se lanza a mano
+          ref: ${{ github.event.client_payload.sha || 'main' }}
 
       - uses: pnpm/action-setup@v4
         with:
